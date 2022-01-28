@@ -63,13 +63,13 @@
 
             if ($request_method != self::$tipo_requisicao) {
 
-
                 if ($request_method == "PUT") {
 
                     if (!isset($parametros) or empty($parametros)) {
                         $controller = "errorController";
                         $metodo = "errorRotas";
                     }
+                    
                 } else {
 
                     $controller = "errorController";
@@ -81,17 +81,18 @@
             $dir = __DIR__ . "/../Framework/Controllers/" . $controller . ".php";
 
             if (file_exists($dir)) {
-
+                
                 require $dir;
-
+                
                 $class = "\SimpleWork\Framework\Controllers\ " . $controller;
                 $class = str_replace(" ", "", $class);
-
+                
                 $instanc = new $class;
-
+                
                 if (method_exists($instanc, $metodo)) {
 
                     call_user_func_array(array($instanc, $metodo), array($parametros));
+
                 } else {
 
                     $controller = "errorController";

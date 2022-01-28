@@ -15,14 +15,4 @@
             $this->view("home/homeView");
         }
 
-        public function usuarios()
-        {
-            $this->view("home/usuariosView");
-        }
-
-        public function publicarArtigo()
-        {
-            $this->view("home/publicarArtigoView");
-        }
-
     }

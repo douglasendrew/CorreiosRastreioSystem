@@ -58,16 +58,16 @@ $("#cad_encomenda").click( () => {
             method: "POST",
             url: "app/Actions/add_encomenda.php",
             data: {
-                empresa: empresa_nome,
-                ac: ac,
-                cep: cep,
-                endereco_completo: endereco_completo,
-                complemento: complemento,
-                resp_envio: resp_envio,
-                tipo_envio: tipo_envio,
-                ar: ar,
-                data_envio: data_envio,
-                cod_rastreio: cod_rastreio
+                empresa: empresa_nome.val(),
+                ac: ac.val(),
+                cep: cep.val(),
+                endereco_completo: endereco_completo.val(),
+                complemento: complemento.val(),
+                resp_envio: resp_envio.val(),
+                tipo_envio: tipo_envio.val(),
+                ar: ar.val(),
+                data_envio: data_envio.val(),
+                cod_rastreio: cod_rastreio.val()
             },
             error: function() {
                 Aviso.fire({
