@@ -19,13 +19,18 @@
 </head>
 <body>
     
-    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+    <nav class="uk-navbar-container uk-margin uk-container uk-container-expand" uk-navbar="mode: click">
 
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">
 
-                <li class="uk-active"><a href="#" style="font-size: 25px;">Nome da Empresa</a></li>
+                <li class="uk-active">
+                    <a href="#" style="font-size: 18px;">
+                        <img src="https://logodownload.org/wp-content/uploads/2014/05/correios-logo-1-1.png" alt="" width="70">
+                        Gestão de Encomendas
+                    </a>
+                </li>
 
             </ul>
 

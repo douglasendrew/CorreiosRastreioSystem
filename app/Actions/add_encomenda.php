@@ -11,4 +11,4 @@
     $data_envio = $_POST['data_envio'];
     $cod_rastr  = $_POST['cod_rastreio'];
 
-    echo "KKKKKKKKKKKKKKKKKKKKKKKKKK";
+    echo "Teste";

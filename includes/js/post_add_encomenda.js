@@ -8,80 +8,85 @@ var Aviso = Swal.mixin({
 
 $("#cad_encomenda").click( () => {
     
-    // Recuperar todos campos 
-    var empresa_nome        = $("#empresa_nome");
-    var ac                  = $("#ac");
-    var cep                 = $("#cep");
-    var endereco_completo   = $("#endereco_completo");
-    var complemento         = $("#complemento");
-    var resp_envio          = $("#resp_envio");
-    var tipo_envio          = $("#tipo_envio");
-    var ar                  = $("#ar");
-    var data_envio          = $("#data_envio");
-    var cod_rastreio        = $("#cod_rastreio");
+    $("#cad_encomenda").hide();
 
-    var obj = [
-        empresa_nome, 
-        ac, 
-        cep, 
-        endereco_completo, 
-        complemento, 
-        resp_envio,
-        tipo_envio, 
-        ar,
-        data_envio,
-        cod_rastreio
-    ]
+    setTimeout( () => {
+        
+        // Recuperar todos campos 
+        var empresa_nome        = $("#empresa_nome");
+        var ac                  = $("#ac");
+        var cep                 = $("#cep");
+        var endereco_completo   = $("#endereco_completo");
+        var complemento         = $("#complemento");
+        var resp_envio          = $("#resp_envio");
+        var tipo_envio          = $("#tipo_envio");
+        var ar                  = $("#ar");
+        var data_envio          = $("#data_envio");
+        var cod_rastreio        = $("#cod_rastreio");
 
-    var campos_vazios = 0;
+        var obj = [
+            empresa_nome, 
+            ac, 
+            cep, 
+            endereco_completo, 
+            complemento, 
+            resp_envio,
+            tipo_envio, 
+            ar,
+            data_envio,
+            cod_rastreio
+        ]
 
-    // Verificar se tem campos que nao foram preenchidos
-    $.each(obj, (a, value) => {
-        if(value.val() == "")
-        {
-            campos_vazios++;
-        }else {
-            console.log(value.val())
-        }
-    });
+        var campos_vazios = 0;
 
-    if( campos_vazios > 0 )
-    {
-        Aviso.fire({
-            icon: 'error',
-            title: 'Prencha todos campos obrigatórios'
-        })
-    }else {
-
-        // Faz a requisição para cadastrar a encomenda
-        $.ajax({
-            method: "POST",
-            url: "app/Actions/add_encomenda.php",
-            data: {
-                empresa: empresa_nome.val(),
-                ac: ac.val(),
-                cep: cep.val(),
-                endereco_completo: endereco_completo.val(),
-                complemento: complemento.val(),
-                resp_envio: resp_envio.val(),
-                tipo_envio: tipo_envio.val(),
-                ar: ar.val(),
-                data_envio: data_envio.val(),
-                cod_rastreio: cod_rastreio.val()
-            },
-            error: function() {
-                Aviso.fire({
-                    icon: 'error',
-                    title: 'Ocorreu um erro ao relizar a ação, tente novamente mais tarde'
-                });
+        // Verificar se tem campos que nao foram preenchidos
+        $.each(obj, (a, value) => {
+            if(value.val() == "")
+            {
+                campos_vazios++;
             }
-        })
-        .done( (returned) => {
+        });
+
+        if( campos_vazios > 0 )
+        {
             Aviso.fire({
                 icon: 'error',
-                title: 'Re: ' + returned
+                title: 'Prencha todos campos obrigatórios'
             });
-        });
-    }
+
+            $("#cad_encomenda").show();
+
+        }else {
+
+            // Faz a requisição para cadastrar a encomenda
+            $.ajax({
+                method: "POST",
+                url: "app/Actions/add_encomenda.php",
+                data: {
+                    empresa: empresa_nome.val(),
+                    ac: ac.val(),
+                    cep: cep.val(),
+                    endereco_completo: endereco_completo.val(),
+                    complemento: complemento.val(),
+                    resp_envio: resp_envio.val(),
+                    tipo_envio: tipo_envio.val(),
+                    ar: ar.val(),
+                    data_envio: data_envio.val(),
+                    cod_rastreio: cod_rastreio.val()
+                },
+                complete: function()
+                {
+                    $("#cad_encomenda").show();
+                }
+            })
+            .done( (returned) => {
+                Aviso.fire({
+                    icon: 'error',
+                    title: returned
+                });
+            });
+        }
+
+    }, 1000)
 
 });
