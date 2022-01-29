@@ -8,5 +8,4 @@
 <p>- Utilização de framework próprio (SimpleWork PHP).</p>
 
 <br>
-Preview:
 ![image](https://user-images.githubusercontent.com/77037004/151666858-a3a78f20-bf5b-4fde-a156-c9e21b401c09.png)
