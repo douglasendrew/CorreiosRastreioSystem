@@ -34,7 +34,10 @@
 
         public static function updateEncomenda( $id_encomenda, array $encomenda )
         {
-            self::$result_sql = Db::update("correspondencias", [], ["id" => $id_encomenda]);
+            self::$encomendas = $encomenda;
+            self::$time_now = time();
+            self::$result_sql = Db::update("correspondencias", ["nome_empresa" => self::$encomendas['empresa'], "ac" => self::$encomendas['ac'], "cep" => self::$encomendas['cep'], "endereco" => self::$encomendas['end_comp'], "complemento" => self::$encomendas['complem'], "pessoa_responsavel" => self::$encomendas['rsp_envio'], "tipo_envio" => self::$encomendas['tipo_envio'], "ar" => self::$encomendas['ar'], "data_envio" => self::$encomendas['data_envio'], "data_update" => self::$time_now], ["id" => $id_encomenda]);     
+            return self::$result_sql;
         }
 
     }

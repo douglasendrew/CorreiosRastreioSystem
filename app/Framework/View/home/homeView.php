@@ -20,10 +20,10 @@
                 <input id="resp_envio" class="uk-input uk-margin-small-top" type="text" placeholder="Resp. do Envio *" required>
                 <select id="tipo_envio" class="uk-select uk-margin-small-top">
                     <option disabled selected>-- Tipo de envio * --</option>
-                    <option>Carta Comum</option>
-                    <option>Carta Registrada</option>
-                    <option>PAC</option>
-                    <option>SEDEX</option>
+                    <option value="Carta Comum">Carta Comum</option>
+                    <option value="Carta Registrada">Carta Registrada</option>
+                    <option value="PAC">PAC</option>
+                    <option value="SEDEX">SEDEX</option>
                 </select>
                 <input id="ar" class="uk-input uk-margin-small-top" type="text" placeholder="AR *" required>
                 <input id="data_envio" class="data_input_enc uk-input uk-margin-small-top" type="text" placeholder="Data Envio *" required>

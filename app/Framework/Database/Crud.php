@@ -193,7 +193,7 @@
 
                 if ($teste->execute()) {
                     if ($teste->rowCount() > 0) {
-                        return $teste;
+                        return "Atualizado com sucesso";
                     } else {
                         return "Nenhum resultado foi encontrado";
                     }

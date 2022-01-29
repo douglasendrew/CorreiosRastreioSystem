@@ -76,6 +76,8 @@
 
                 }
 
+            }else {
+                echo "Nenhuma informação para mostrar.";
             }
 
         }

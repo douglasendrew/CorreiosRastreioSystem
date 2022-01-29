@@ -46,25 +46,34 @@
                         <h2 class="uk-modal-title">'. strtoupper($encomenda['cod_rastreio']) .'</h2>
                         <p>
                             <div class="uk-margin">
-                                <input value="'.$encomenda['nome_empresa'].'" id="empresa_nome" class="uk-input" type="text" placeholder="Nome da empresa *" required>
-                                <input value="'.$encomenda['ac'].'" id="ac" class="uk-input uk-margin-small-top" type="text" placeholder="A/C Destinatário *" required>
-                                <input value="'.$encomenda['cep'].'" id="cep" class="cep uk-input uk-margin-small-top" type="text" placeholder="CEP *" required>
-                                <input value="'.$encomenda['endereco'].'" id="endereco_completo" class="uk-input uk-margin-small-top" type="text" placeholder="Endereço *" required>
-                                <input value="'.$encomenda['complemento'].'" id="complemento" class="uk-input uk-margin-small-top" type="text" placeholder="Complemento *" required>
-                                <input value="'.$encomenda['pessoa_responsavel'].'" id="resp_envio" class="uk-input uk-margin-small-top" type="text" placeholder="Resp. do Envio *" required>
-                                <select id="tipo_envio" class="uk-select uk-margin-small-top">
-                                    <option disabled selected>-- Tipo de envio * --</option>
-                                    <option>Carta Comum</option>
-                                    <option>Carta Registrada</option>
-                                    <option>PAC</option>
-                                    <option>SEDEX</option>
-                                </select>
-                                <input value="'.$encomenda['ar'].'" id="ar" class="uk-input uk-margin-small-top" type="text" placeholder="AR *" required>
-                                <input value="'.$encomenda['data_envio'].'" id="data_input_enc data_envio" class="uk-input uk-margin-small-top" type="text" placeholder="Data Envio *" required>
+                                <input value="'.$encomenda['nome_empresa'].'" id="empresa_nome_'.$id.'" class="uk-input" type="text" placeholder="Nome da empresa *" required>
+                                <input value="'.$encomenda['ac'].'" id="ac_'.$id.'" class="uk-input uk-margin-small-top" type="text" placeholder="A/C Destinatário *" required>
+                                <input value="'.$encomenda['cep'].'" id="cep_'.$id.'" class="cep uk-input uk-margin-small-top" type="text" placeholder="CEP *" required>
+                                <input value="'.$encomenda['endereco'].'" id="endereco_completo_'.$id.'" class="uk-input uk-margin-small-top" type="text" placeholder="Endereço *" required>
+                                <input value="'.$encomenda['complemento'].'" id="complemento_'.$id.'" class="uk-input uk-margin-small-top" type="text" placeholder="Complemento *" required>
+                                <input value="'.$encomenda['pessoa_responsavel'].'" id="resp_envio_'.$id.'" class="uk-input uk-margin-small-top" type="text" placeholder="Resp. do Envio *" required>';
+                                echo '<select id="tipo_envio_'.$id.'" class="uk-select uk-margin-small-top">';
+                                foreach ( $tipos_envios as $envio)
+                                {
+                                    if($envio == $encomenda['tipo_envio'])
+                                    {
+                                        echo "<option value='$envio' selected>$envio</option>";
+                                    }else {
+                                        echo "<option value='$envio'>$envio</option>";
+                                    }
+                                }
+                                echo '</select>';
+                echo '
+                                <input value="'.$encomenda['ar'].'" id="ar_'.$id.'" class="uk-input uk-margin-small-top" type="text" placeholder="AR *" required>
+                                <input value="'.$encomenda['data_envio'].'" id="data_envio_'.$id.'" class="data_input_enc uk-input uk-margin-small-top" type="text" placeholder="Data Envio *" required>
                                 <input disabled value="'.$encomenda['cod_rastreio'].'" class="uk-input uk-margin-small-top" type="text" placeholder="Código de Rastreio *" required>
 
-                                <div class="uk-margin-small-top">
-                                    <button id="cad_encomenda" class="uk-button uk-button-primary">Atualizar</button>
+                                <div class="uk-margin-small-top">';
+                                
+                                    ?>
+                                    <button onclick="atualizarEncomenda('<?= $id ?>')" id="att_encomenda" class="uk-button uk-button-primary">Atualizar</button>';
+                                    <?php
+                echo'
                                     <button uk-toggle="target: #excluir-encomenda-'.$id.'" id="" class="uk-button uk-button-danger">Excluir</button>
                                     ';
                                     ?>
