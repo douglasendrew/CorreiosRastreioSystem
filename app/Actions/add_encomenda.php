@@ -11,4 +11,26 @@
     $data_envio = $_POST['data_envio'];
     $cod_rastr  = $_POST['cod_rastreio'];
 
-    echo "Teste";
+    require __DIR__ . "/../../vendor/autoload.php";
+
+    use SimpleWork\Framework\Models\homeModel as Encomenda;
+
+    $json_encomenda = array(
+        "empresa" => $empresa,
+        "ac" => $ac,
+        "cep" => $cep,
+        "end_comp" => $end_comp,
+        "complem" => $complem,
+        "rsp_envio" => $rsp_envio,
+        "tipo_envio" => $tipo_envio,
+        "ar" => $ar,
+        "data_envio" => $data_envio,
+        "cod_rastr" => $cod_rastr,
+    );
+
+    if(Encomenda::newEncomenda($json_encomenda) == "Incluido com sucesso")
+    {
+        echo "1:Sucesso ao incluir a encomenda";
+    }else {
+        echo "0:Erro ao incluir a encomenda";
+    }

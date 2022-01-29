@@ -2,7 +2,7 @@ var Aviso = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 4000,
+    timer: 5000,
     timerProgressBar: true
 });
 
@@ -80,10 +80,25 @@ $("#cad_encomenda").click( () => {
                 }
             })
             .done( (returned) => {
-                Aviso.fire({
-                    icon: 'error',
-                    title: returned
-                });
+
+                var retorno = returned.split(":");
+
+                if(retorno[0] == 1)
+                {
+                    Aviso.fire({
+                        icon: 'success',
+                        title: retorno[1]
+                    });
+                    setTimeout( () => { 
+                        location.reload();
+                    }, 3000)
+                }else {
+                    Aviso.fire({
+                        icon: 'error',
+                        title: retorno[1]
+                    });
+                }
+                
             });
         }
 

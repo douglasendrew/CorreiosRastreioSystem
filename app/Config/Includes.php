@@ -14,6 +14,7 @@
     Config::include("post_add_encomenda.js", "js");
     Config::include("jquery.mask.min.js", "js");
     Config::include("mask_inputs.js", "js");
+    Config::include("listagem_enc.js", "js");
 
     // CSS
     Config::include("style.css", "css");

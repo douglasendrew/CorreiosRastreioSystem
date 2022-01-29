@@ -53,6 +53,7 @@
 
                 }
 
+                $whereText = (empty($whereText)) ? "": $whereText;
                 $sql = "SELECT $campos FROM $from $whereText";
 
                 if($orderby != null)
@@ -133,20 +134,11 @@
 
                 }
 
-                $sql = "INSERT INTO $table ($camposPreencher) VALUES ($valoresCampos)";
-                $teste = Db::db_connect()->prepare($sql);
+                $exec = Db::db_connect()->prepare("INSERT INTO $table ($camposPreencher) VALUES ($valoresCampos)");
 
-                if ($teste->execute()) {
+                if ($exec->execute()) {
 
-                    if ($teste->rowCount() > 0) {
-
-                        return $teste;
-
-                    } else {
-
-                        return "Nada foi inserido";
-
-                    }
+                    return "Incluido com sucesso";
 
                 } else {
 

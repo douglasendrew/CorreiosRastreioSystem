@@ -1,0 +1,1 @@
+$("#listagem_encomendas").load("app/Actions/list_encomendas.php");
