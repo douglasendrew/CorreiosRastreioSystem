@@ -9,9 +9,10 @@
 
         public static $cod_rastreio;
 
-        public static function rastrearEncomenda( string $codigo_rastreio )
+        public static function rastrearEncomenda( $codigo_rastreio )
         {
-            $post = array('Objetos' => 'QI560867216BR');
+
+            $post = array('Objetos' => $codigo_rastreio);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "https://www2.correios.com.br/sistemas/rastreamento/resultado_semcontent.cfm");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -64,12 +65,14 @@
                         $dias = floor($diferenca / (60 * 60 * 24));
     
                         $change = utf8_encode("há {$dias} dias");
-    
-                        $novo_array[] = array("date" => $dia, "hour" => $hora, "location" => $local, "action" => utf8_encode($acao), "message" => utf8_encode($acrionMsg), "change" => utf8_decode($change));
+
                     }
 
-                   echo '<b>' . $acao . '</b><br>' . $local . '<br>' . $dia . ' ' . $hora;
-                   echo "<hr>";
+                    if(!empty($acao))
+                    {
+                        echo '<b>' . $acao . '</b><br>' . $local . '<br>' . $dia . ' ' . $hora;
+                        echo "<hr>";
+                    }
 
                 }
 

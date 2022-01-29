@@ -28,7 +28,8 @@
 
         public static function delEncomenda( $id_encomenda )
         {
-            self::$result_sql = Db::delete(["correspondencias"], ["id" => $id_encomenda]);
+            self::$result_sql = Db::delete("correspondencias", ["id" => $id_encomenda]);
+            return self::$result_sql;
         }
 
         public static function updateEncomenda( $id_encomenda, array $encomenda )

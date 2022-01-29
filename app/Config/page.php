@@ -2,4 +2,4 @@
 
     use SimpleWork\Framework\Page\Site;
 
-    Site::site_name("Correrios Encomendas");
+    Site::site_name("Gestão de Encomendas");

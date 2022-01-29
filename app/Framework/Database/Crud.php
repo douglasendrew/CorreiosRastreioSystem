@@ -242,7 +242,7 @@
 
                     if ($teste->rowCount() > 0) {
 
-                        return true;
+                        return "Excluido com sucesso";
 
                     } else {
 
